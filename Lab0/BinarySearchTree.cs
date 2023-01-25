@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Xml.Linq;
 
 namespace Lab0
 {
@@ -46,16 +47,46 @@ namespace Lab0
             return null;
         }
 
-
         // TODO
         public void Add(int key, T value)
         {
-            throw new NotImplementedException();
+            if (Root == null)
+            {
+                Root = new BinarySearchTreeNode<T>(key, value);
+                Count++;
+            }
+            else
+            {
+                AddRecursive(key, value, Root);
+            }
         }
         // TODO
-        private void AddRecursive(int key, T value, BinarySearchTree<T> node)
+        private void AddRecursive(int key, T value, BinarySearchTreeNode<T> node)
         {
-
+            if (key < node.Key)
+            {
+                if (node.Left == null)
+                {
+                    node.Left = new BinarySearchTreeNode<T>(key, value);
+                    Count++;
+                }
+                else
+                {
+                    AddRecursive(key, value, node.Left);
+                }               
+            }
+            else
+            {
+                if (node.Right == null)
+                {
+                    node.Right = new BinarySearchTreeNode<T> (key, value);
+                    Count++;
+                }
+                else
+                {
+                    AddRecursive(key, value, node.Right);
+                }
+            }
         }
 
         // TODO
@@ -96,7 +127,27 @@ namespace Lab0
         // TODO
         public T Search(int key)
         {
-            throw new NotImplementedException();
+            return SearchRecursive(Root, key);
+        }
+
+        private T SearchRecursive(BinarySearchTreeNode<T>node , int key)
+        {
+            if (node != null)
+            {
+                if (key == node.Key)
+                {
+                    return node.Value;
+                }
+                else if (key < node.Key)
+                {
+                    return SearchRecursive(node.Left, key);
+                }
+                else if (key > node.Key)
+                {
+                    return SearchRecursive(node.Right, key);
+                }
+            }
+            return default(T);
         }
 
         // TODO
