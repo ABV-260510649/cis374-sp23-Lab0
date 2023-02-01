@@ -3,14 +3,20 @@ class Program
 {
     static void Main(string[] args)
     {
-        BinarySearchTree<char> tree = new BinarySearchTree<char>();
-        char random = ' ';
-        for (int i = 0; i < 50; i++)
-        {
-            random = (char)i;
-            tree.Add(i, random);
-            Console.WriteLine((random, tree.Search(i)));
-        }
+        var tree = new BinarySearchTree<int>();
+
+        tree.Add(8, 7);
+        tree.Add(10, 6);
+        tree.Add(6, 2);
+        tree.Add(5, 0);
+        tree.Add(22, 5);
+        tree.Add(26, 4);
+        tree.Add(7, 1);
+        tree.Add(23, 3);
+
+        var keys = tree.PreOrderKeys;
+        Console.WriteLine(keys);
+
     }
 }
 
