@@ -228,19 +228,26 @@ namespace Lab0
         // TODO
         public List<BinarySearchTreeNode<T>> RangeSearch(int min, int max)
         {
+            //Method 1 = use Next()
+            /* var nodes = new List<BinarySearchTreeNode<T>>();
+            BinarySearchTreeNode<T> startingNode;*/
+
+            // Method 2 = use InOrderKeys
             var nodes = new List<BinarySearchTreeNode<T>>();
-            if (min < 0)
+            if (min > max)
             {
                 return nodes;
             }
-            else
+            var orderedKeys = InOrderKeys;
+            foreach(int key in orderedKeys)
             {
-                for (int i = min; i <= max; i++)
+                if (key >= min && key <= max)
                 {
-                    nodes.Add(GetNode(i));
+                    nodes.Add(GetNode(key));
                 }
-                return nodes;
             }
+            return nodes;
+
         }
 
         public void Remove(int key)
