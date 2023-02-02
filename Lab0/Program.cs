@@ -3,20 +3,27 @@ class Program
 {
     static void Main(string[] args)
     {
-        var tree = new BinarySearchTree<int>();
+        /*BinarySearchTree<int> tree = new BinarySearchTree<int>();
+        int index = 0;
+        for (int i = 0; i < 50; i++)
+        {
+            index = (i + 13) % 50;
+            tree.Add(index, index);
+        }
 
-        tree.Add(8, 7);
-        tree.Add(10, 6);
-        tree.Add(6, 2);
-        tree.Add(5, 0);
-        tree.Add(22, 5);
-        tree.Add(26, 4);
-        tree.Add(7, 1);
-        tree.Add(23, 3);
+        BinarySearchTreeNode<int> current = new BinarySearchTreeNode<int>(1, 1);
+        for (int i = 0; i < 49; i++)
+        {
+            current = tree.GetNode(i);
+            Console.WriteLine( (tree.Search(i + 1), tree.Next(current).Value));
+        }*/
 
-        var keys = tree.PreOrderKeys;
-        Console.WriteLine(keys);
-
+        BinarySearchTree<int> tree = new BinarySearchTree<int>();
+        tree.Add(5, 7);
+        tree.Add(4, 5);
+        Console.WriteLine( (tree.Search(5), tree.Next(tree.GetNode(4)).Value));
     }
+
 }
+
 
