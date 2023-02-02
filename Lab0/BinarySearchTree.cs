@@ -39,83 +39,38 @@ namespace Lab0
         }
 
         // TODO
-        public int? MinKey => MinKeyRecursive(Root);
+        public int? MinKey => MinNode(Root).Key;
 
-        private int? MinKeyRecursive(BinarySearchTreeNode<T> node)
+        // TODO
+        public int? MaxKey => MaxNode(Root).Key;
+
+        // TODO
+        public Tuple<int, T> Min
         {
-            if (node == null)
+            get
             {
-                return null;
+                if (IsEmpty)
+                {
+                    return null;
+                }
+                var minNode = MinNode(Root);
+                return Tuple.Create(minNode.Key, minNode.Value);
             }
-            else if (node.Left == null)
-            {
-                return node.Key;
-            }
-            else
-            {
-                return MinKeyRecursive(node.Left);
-            }
-
         }
 
         // TODO
-        public int? MaxKey => MaxKeyRecursive(Root);
-
-        private int? MaxKeyRecursive(BinarySearchTreeNode<T> node)
+        public Tuple<int, T> Max
         {
-            if (node == null)
+            get
             {
-                return null;
-            }
-            else if (node.Right == null)
-            {
-                return node.Key;
-            }
-            else
-            {
-                return MaxKeyRecursive(node.Left);
-            }
-
-        }
-
-        // TODO
-        public Tuple<int, T> Min => MinRecursive(Root);
-
-        private Tuple<int, T> MinRecursive(BinarySearchTreeNode<T> node)
-        {
-            {
-                if (node.Left == null)
+                if (IsEmpty)
                 {
-                    Tuple<int, T> minNode = new Tuple<int, T>(node.Key, node.Value);
-                    return minNode;
+                    return null;
                 }
-                else
-                {
-                    return MinRecursive(node.Left);
-                }
+                var maxNode = MaxNode(Root);
+                return Tuple.Create(maxNode.Key, maxNode.Value);
 
             }
-
-        }
-
-        // TODO
-        public Tuple<int, T> Max => MaxRecursive(Root);
-
-        private Tuple<int, T> MaxRecursive(BinarySearchTreeNode<T> node)
-        {
-            {
-                if (node.Left == null)
-                {
-                    Tuple<int, T> minNode = new Tuple<int, T>(node.Key, node.Value);
-                    return minNode;
-                }
-                else
-                {
-                    return MaxRecursive(node.Right);
-                }
-
-            }
-
         }
 
         // TODO
