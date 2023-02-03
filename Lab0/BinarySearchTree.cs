@@ -331,9 +331,13 @@ namespace Lab0
             if (node.Left != null && node.Right != null)
             {
                 var sucessor = Next(node);
-                node.Key = sucessor.Key;
-                node.Value = sucessor.Value;
+                var sucessorKey = sucessor.Key;
+                var sucessorValue = sucessor.Value;
                 Remove(sucessor.Key);
+                node.Key = sucessorKey;
+                node.Value = sucessorValue;
+                return;
+
             }
         }
 
