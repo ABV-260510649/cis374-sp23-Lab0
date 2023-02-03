@@ -18,7 +18,7 @@ namespace Lab0
         public int Count { get; private set; }
 
         // TODO
-        public int Height => HeightRecursive(Root);
+        public int Height =>  IsEmpty ? 0 : HeightRecursive(Root);
 
         private int HeightRecursive(BinarySearchTreeNode<T> node)
         {
@@ -284,6 +284,14 @@ namespace Lab0
             {
                 // only has a right child
                 var child = node.Right;
+                
+                // if the tree only has 2 things
+                if (node.Parent == null && Height == 1)
+                {
+                    Root = child;
+                    return;
+                }
+
                 if (parent.Left == node)
                 {
                     parent.Left = child;
@@ -304,6 +312,14 @@ namespace Lab0
             {
                 // only has a left child
                 var child = node.Left;
+
+                // if the tree only has 2 things
+                if (node.Parent == null && Height == 1)
+                {
+                    Root = child;
+                    return;
+                }
+
                 if (parent.Left == node)
                 {
                     parent.Left = child;
