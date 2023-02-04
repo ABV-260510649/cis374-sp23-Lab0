@@ -285,8 +285,8 @@ namespace Lab0
                 // only has a right child
                 var child = node.Right;
                 
-                // if the tree only has 2 things
-                if (node.Parent == null && Height == 1)
+                // if the node is root
+                if (node.Parent == null)
                 {
                     Root = child;
                     return;
@@ -313,8 +313,8 @@ namespace Lab0
                 // only has a left child
                 var child = node.Left;
 
-                // if the tree only has 2 things
-                if (node.Parent == null && Height == 1)
+                // if the node is root
+                if (node.Parent == null)
                 {
                     Root = child;
                     return;
